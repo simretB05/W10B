@@ -4,7 +4,7 @@ let get_all_articles_p =  document.querySelectorAll(`article > p`);
 let get_element_id = document.getElementById( `header` );
 let get_elements_className = document.getElementsByClassName( `books` );
 
-// changing an elements style by using there given name
+// changing an elements style by using there given name.
 get_element_id[`style`][`min-height`] = `10vh`
 get_element_id[`style`][`backgroundColor`] = `green`
 get_element_id[`style`][`color`]=`white`
