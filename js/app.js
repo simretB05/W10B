@@ -73,7 +73,24 @@ function checkEnough( string )
 }
 
 checkEnough(`.books_title`)
-//  BONUS 2) still working on it
+//  BONUS 2) 
+//used a function that takes an arry
+function manyCss(arry){
+       
+    for ( let i = 0; i < arry.length; i++ )
+    {
+        let get_match = document.querySelector(arry[i])
+        let inner_match = get_match[`innerHTML`] 
+        console.log(inner_match)
+        if ( inner_match.includes(`happy`)===true)
+        {
+            get_match.insertAdjacentHTML(`afterend`,`<p>this is the tag</p>`)
+        }
+    }
+
+}
+   manyCss([`.main-title`,`#main_books`,`.main_body`])
+
 // BONUS 3)
 // created an arry of objects 
 
@@ -100,9 +117,9 @@ function userProfile( arry )
 {
     //loop through the arry of objects and added h2,p and and an image tage with .insertAdjacentHTML method to the dome object div
     for ( i = 0; i < userName.length; i++ ){
-        // if ( userName[i][`bio`].includes( `frick`, `darn`, `golly` ) )/still working on this
+        if ( userName[i][`bio`].includes( `frick`,`darn`,`golly` )===true )
         {
-                   
+            // userName[i][`bio`].find(element=>element===`frick`,`darn`,`golly`)        
         }
         users_profile.insertAdjacentHTML( `beforebegin`, `<h2>${ userName[i][`username`] }</h2>` )
         users_profile.insertAdjacentHTML( `beforeend`, `<p>${ userName[i][`bio`] }</p>` )
