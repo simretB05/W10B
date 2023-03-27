@@ -121,17 +121,16 @@ function userProfile( arry ){
 //loop through the arry of objects and added h2,p and and an image tage with .insertAdjacentHTML method to the dome object div
     for ( i = 0; i < userName.length; i++ )
     {
-        // assigned a variable that will save the bio key value that is changed to multiple an object  insted of just one full string by using split() method
-        //   so i can acess the words i will be looking for 
+        // assigned  a variable with the name  change_to_string that will save the bio key value that is changed to multiple objects insted of just one full string by using split() method
         let change_to_string = userName[i][`bio`].split( ' ' );
-        console.log( typeof ( change_to_string ) )
-        // created another loop to loop through the objects that has been changed to an object 
+        console.log( typeof (change_to_string ))
+        // created a nested loop to loop through the objects  change_to_string
         for ( let y = 0; y < change_to_string.length; y++ )
         {
             // created another loop that will loop through the words am trying to check 
             for ( let x = 0; x < wordsTo_replace.length; x++ )
             {
-                // if the outer and the inner loops find the smae words the object in the bio will be changed to **** otherwise it will remain the pervious word
+                // if the outer and the inner loops find the same words the object in the bio will be changed to **** otherwise it will remain the pervious word
                 if ( change_to_string[y] === wordsTo_replace[x] ){
                     change_to_string[y] = '*****';
                 } else
