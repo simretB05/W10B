@@ -76,10 +76,12 @@ checkEnough(`.books_title`)
 //  BONUS 2) 
 //used a function that takes an arry
 function manyCss(arry){
-       
+// a loop that loops through the argument arry objects and  stops when it reaches the arry object length
     for ( let i = 0; i < arry.length; i++ )
     {
+
         let get_match = document.querySelector(arry[i])
+        
         let inner_match = get_match[`innerHTML`] 
         console.log(inner_match)
         if ( inner_match.includes(`happy`)===true)
@@ -96,36 +98,57 @@ function manyCss(arry){
 
 let userName = [{
     username: `Gladys `,
-    bio: `Gladys is a compassionate and dedicated nurse golly  with a passion for providing the highest level of care to her patients. She has been working as a registered nurse for over a decade, specializing in emergency care and critical care. Gladys is known for her exceptional bedside manner, her ability to remain calm under pressure, and her attention to detail.`,
+    bio: `frick Gladys  a is a  compassionate and dedicated golly nurse   with a passion  for darn providing the highest level of care to her patients. She has been working as a registered nurse for over a decade, specializing in emergency care and critical care. Gladys is known for her exceptional bedside manner, her ability to remain calm under pressure, and her attention to detail.`,
     profile_image_url: `<img class="boooks_img" src="/images/Gladys.jpg" alt="bio images">`
 },
 {
     username: `Ashely `,
-    bio: `Dr. Maria Rodriguez is a  frick licensed clinical psychologist with over 15 years of experience in the field. She specializes in treating adults with anxiety, depression, and trauma-related disorders. Dr. Rodriguez is known for her warm and empathetic approach, and her ability to create a safe and supportive environment for her clients.`,
+    bio: `Dr. Ashely is a  frick licensed clinical psychologist with over 15 years of experience in the field. She specializes in treating adults with anxiety, depression, and trauma-related disorders. Dr. Rodriguez is known for her warm and empathetic approach, and her ability to create a safe and supportive environment for her clients.`,
     profile_image_url: `<img class="boooks_img" src="/images/ashely.jpg" alt="bio images">`
 },
 {
     username: `Brendan `,
-    bio: `an accomplished drummer with over 20 years  darn of experience in the music industry. He has played with a wide range of artists and bands, and is known for his versatility and dynamic playing style. John's musical journey began when he was just 10 years old, and he quickly developed a passion for drumming that has stayed with him ever since.`,
+    bio: `an accomplished darn drummer with  over darn 20 years  darn of experience in the music industry.He has played with a wide range of artists and bands, and is known for his versatility and dynamic playing style.John's musical journey began when he was just 10 years old, and he quickly developed a passion for drumming that has stayed with him ever since frick.`,
     profile_image_url: `<img class="boooks_img" src="/images/brendan.jpg" alt="bio images">`
 }
 ]
 //selected a div from the DOM OBJECT using a selector 
-let users_profile = document.getElementById(`profile`)
- //created a function that takes arry of objects as an argument 
-function userProfile( arry )
-{
-    //loop through the arry of objects and added h2,p and and an image tage with .insertAdjacentHTML method to the dome object div
-    for ( i = 0; i < userName.length; i++ ){
-        if ( userName[i][`bio`].includes( `frick`,`darn`,`golly` )===true )
+let users_profile = document.getElementById( `profile` )
+// creating arry of strings that i will use to check their existance using a loop 
+let wordsTo_replace = [`frick`, `golly`, `darn`]
+  //created a function that takes arry of objects as an argument 
+function userProfile( arry ){
+//loop through the arry of objects and added h2,p and and an image tage with .insertAdjacentHTML method to the dome object div
+    for ( i = 0; i < userName.length; i++ )
+    {
+        // assigned a variable that will save the bio key value that is changed to multiple an object  insted of just one full string by using split() method
+        //   so i can acess the words i will be looking for 
+        let change_to_string = userName[i][`bio`].split( ' ' );
+        console.log( typeof ( change_to_string ) )
+        // created another loop to loop through the objects that has been changed to an object 
+        for ( let y = 0; y < change_to_string.length; y++ )
         {
-            // userName[i][`bio`].find(element=>element===`frick`,`darn`,`golly`)        
+            // created another loop that will loop through the words am trying to check 
+            for ( let x = 0; x < wordsTo_replace.length; x++ )
+            {
+                // if the outer and the inner loops find the smae words the object in the bio will be changed to **** otherwise it will remain the pervious word
+                if ( change_to_string[y] === wordsTo_replace[x] ){
+                    change_to_string[y] = '*****';
+                } else
+                {
+                    change_to_string[y];
+                }
+            }
         }
+        //since the bio has been changed to multiple object values it must me joined to create one whole string value so i used the join() method
+        userName[i].bio = change_to_string.join( ' ' );
+        console.log( userName[i].bio )
+        // used the insertAdjacentHTML method to create the h2, p and the image
         users_profile.insertAdjacentHTML( `beforebegin`, `<h2>${ userName[i][`username`] }</h2>` )
         users_profile.insertAdjacentHTML( `beforeend`, `<p>${ userName[i][`bio`] }</p>` )
         users_profile.insertAdjacentHTML( `afterbegin`, `${ userName[i][`profile_image_url`] }` )
-        
     }
 }
-
-userProfile(userName)
+    
+// called the function with the userName arry
+userProfile( userName )
